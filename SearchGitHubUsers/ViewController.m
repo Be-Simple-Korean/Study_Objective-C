@@ -62,8 +62,13 @@
         for(NSDictionary *item in items){
             NSString *profileName = item[@"login"];
             NSString *profileImgUrl = item[@"avatar_url"];
+            NSString *profilePage = item[@"html_url"];
+            
             NSLog(@"item name >> %@ , url >> %@",profileName,profileImgUrl);
-            [self->rootData addObject:@{@"name":profileName,@"imgUrl":profileImgUrl}];
+            [self->rootData addObject:@{
+                @"name":profileName,@"imgUrl":profileImgUrl,
+                @"profileUrl":profilePage
+            }];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
@@ -75,6 +80,22 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 130.0;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"select Index >> %li",indexPath.row);
+    NSString *url = [rootData[indexPath.row] objectForKey:@"profileUrl"];
+    NSLog(@"loadUrl >> %@",url);
+    [self openWebPage:url];
+}
+
+-(void)openWebPage:(NSString *)url{
+    NSURL *webUrl = [NSURL URLWithString:url];
+    if([[UIApplication sharedApplication] canOpenURL:webUrl]){
+        [[UIApplication sharedApplication] openURL:webUrl options:@{} completionHandler:nil];
+    }else{
+        NSLog(@"can't open url");
+    }
 }
 
 @end
