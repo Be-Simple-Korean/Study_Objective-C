@@ -1,0 +1,24 @@
+{
+  "originHash" : "a9fe5e27fc5cc84774e69c969bcea9aca6211ac80e0ee0aad6824ca4e9bc5de0",
+  "pins" : [
+    {
+      "identity" : "afnetworking",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AFNetworking/AFNetworking.git",
+      "state" : {
+        "revision" : "ffae2391ab0c29dc88eb0a58d2f5b2c2c27cadbf",
+        "version" : "4.0.1"
+      }
+    },
+    {
+      "identity" : "sdwebimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SDWebImage/SDWebImage.git",
+      "state" : {
+        "revision" : "10d06f6a33bafae8c164fbfd1f03391f6d4692b3",
+        "version" : "5.20.0"
+      }
+    }
+  ],
+  "version" : 3
+}

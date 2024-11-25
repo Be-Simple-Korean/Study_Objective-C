@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		804438342CF40A260050C31B /* AFNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 804438332CF40A260050C31B /* AFNetworking */; };
+		8044383A2CF415C50050C31B /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 804438392CF415C50050C31B /* SDWebImage */; };
+		8044383C2CF415C50050C31B /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8044383B2CF415C50050C31B /* SDWebImageMapKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		801273212CF01A4600BDEC8B /* SearchGitHubUsers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchGitHubUsers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +42,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8044383A2CF415C50050C31B /* SDWebImage in Frameworks */,
+				8044383C2CF415C50050C31B /* SDWebImageMapKit in Frameworks */,
+				804438342CF40A260050C31B /* AFNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +87,9 @@
 			);
 			name = SearchGitHubUsers;
 			packageProductDependencies = (
+				804438332CF40A260050C31B /* AFNetworking */,
+				804438392CF415C50050C31B /* SDWebImage */,
+				8044383B2CF415C50050C31B /* SDWebImageMapKit */,
 			);
 			productName = SearchGitHubUsers;
 			productReference = 801273212CF01A4600BDEC8B /* SearchGitHubUsers.app */;
@@ -106,6 +118,10 @@
 			);
 			mainGroup = 801273182CF01A4600BDEC8B;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				804438322CF40A260050C31B /* XCRemoteSwiftPackageReference "AFNetworking" */,
+				804438382CF415C50050C31B /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 801273222CF01A4600BDEC8B /* Products */;
 			projectDirPath = "";
@@ -327,6 +343,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		804438322CF40A260050C31B /* XCRemoteSwiftPackageReference "AFNetworking" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AFNetworking/AFNetworking.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
+		804438382CF415C50050C31B /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.20.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		804438332CF40A260050C31B /* AFNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 804438322CF40A260050C31B /* XCRemoteSwiftPackageReference "AFNetworking" */;
+			productName = AFNetworking;
+		};
+		804438392CF415C50050C31B /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 804438382CF415C50050C31B /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		8044383B2CF415C50050C31B /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 804438382CF415C50050C31B /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 801273192CF01A4600BDEC8B /* Project object */;
 }

@@ -7,7 +7,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<UITableViewDataSource,UITextFieldDelegate,UITableViewDelegate>{
+    NSMutableArray<NSDictionary *> *rootData;
+    NSString *baseUrl;
+}
+@property (strong, nonatomic) IBOutlet UITextField *keywordTextField;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 
 @end
