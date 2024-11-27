@@ -6,11 +6,15 @@
 //
 
 #import <Foundation/Foundation.h>
-
-NS_ASSUME_NONNULL_BEGIN
+#import "AFNetworking.h"
 
 @interface NetworkManager : NSObject
 
-@end
+@property (nonatomic, strong) AFHTTPSessionManager *manager;
++ (instancetype)sharedManager;
 
-NS_ASSUME_NONNULL_END
+- (void)requestUsers:(NSString *)keyword
+             success:(void (^)(id responseObject))success
+             failure:(void (^)(NSError *error))failure;
+
+@end

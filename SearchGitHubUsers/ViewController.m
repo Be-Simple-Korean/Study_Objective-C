@@ -9,6 +9,7 @@
 #import "ProfileCell.h"
 #import "AFNetworking.h"
 #import <SDWebImage/SDWebImage.h>
+#import "NetworkManager.h"
 @interface ViewController ()
 
 @end
@@ -52,10 +53,8 @@
 }
 
 -(void)reuqestGithubUsers:(NSString *)keyword{
-    NSString *url = [NSString stringWithFormat:@"https://api.github.com/search/users?q=%@",keyword];
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    [manager GET:url parameters:nil headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NetworkManager *manager = [NetworkManager sharedManager];
+    [manager requestUsers:keyword success:^(id responseObject) {
         NSLog(@"success request");
         [self->rootData removeAllObjects];
         NSArray *items = responseObject[@"items"];
@@ -73,8 +72,14 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
         });
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"failure request");
+    }failure:^(NSError *error) {
+        NSString *message = error ? error.localizedDescription : @"unknown Error";
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"통신 에러" message:message preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [controller dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [controller addAction:action];
+        [self presentViewController:controller animated:YES completion:nil];
     }];
 }
 
