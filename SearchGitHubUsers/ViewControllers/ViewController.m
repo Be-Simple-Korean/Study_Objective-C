@@ -10,6 +10,7 @@
 #import "AFNetworking.h"
 #import <SDWebImage/SDWebImage.h>
 #import "NetworkManager.h"
+#import "CustomPopupController.h"
 @interface ViewController ()
 
 @end
@@ -88,19 +89,12 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"select Index >> %li",indexPath.row);
-    NSString *url = [rootData[indexPath.row] objectForKey:@"profileUrl"];
-    NSLog(@"loadUrl >> %@",url);
-    [self openWebPage:url];
-}
-
--(void)openWebPage:(NSString *)url{
-    NSURL *webUrl = [NSURL URLWithString:url];
-    if([[UIApplication sharedApplication] canOpenURL:webUrl]){
-        [[UIApplication sharedApplication] openURL:webUrl options:@{} completionHandler:nil];
-    }else{
-        NSLog(@"can't open url");
-    }
+    UIStoryboard *board = [UIStoryboard storyboardWithName:@"CustomPopup" bundle:nil];
+    CustomPopupController *controller  = (CustomPopupController *)[board instantiateViewControllerWithIdentifier:@"CustomPopup"];
+    controller.profileData = rootData[indexPath.row];
+    [controller setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+    [controller setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 @end
